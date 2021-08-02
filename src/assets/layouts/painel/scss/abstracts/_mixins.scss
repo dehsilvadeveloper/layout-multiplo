@@ -1,0 +1,36 @@
+/*
+ * MIXINS SCSS
+ * @version v1.0
+ * 
+ */
+
+@mixin flexContainer($direction, $justify, $align) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin fontStyle($size, $color, $weight: 400, $style: normal, $align: left) {
+	font-size: $size;
+	color: $color;
+	font-weight: $weight;
+	font-style: $style;
+	text-align: $align;
+}
+
+@mixin backgroundOpacity($color, $opacity: 0.3) {
+    background: $color; /* Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin linearGradient($top, $bottom) {
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top), color-stop(100%, $bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%, $bottom 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%, $bottom 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%, $bottom 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%, $bottom 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000', GradientType=0); /* IE6-9 */
+}

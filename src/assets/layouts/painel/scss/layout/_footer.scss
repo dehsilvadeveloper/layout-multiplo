@@ -1,0 +1,32 @@
+/*
+ * FOOTER SCSS
+ * @version v1.0
+ * 
+ */
+
+body.painel-layout {
+
+    footer.sticky-footer {
+        padding-top: $footer-padding-top;
+        padding-right: $footer-padding-right; 
+        padding-bottom: $footer-padding-bottom;
+        padding-left: $footer-padding-left;
+        flex-shrink: 0;
+
+        .copyright {
+            line-height: $footer-copyright-line-height;
+            font-size: $footer-copyright-font-size;
+        }
+
+    }
+
+}
+
+// Indicador no elemento body de que a sidebar está no modo "fechado"
+body.painel-layout.sidebar-toggled {
+
+    footer.sticky-footer {
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,639 @@
+/*
+ * SIDEBAR SCSS
+ * @version v1.0
+ * 
+ */
+
+body.painel-layout {
+
+    /**
+    * =================================
+    * Sidebar
+    * =================================
+    */
+    .sidebar {
+        width: $sidebar-collapsed-width;
+        min-height: $sidebar-min-height;
+
+        // Indica que a sidebar está no modo "fechado"
+        &.toggled {
+            width: 0 !important;
+            overflow: hidden;
+
+            #sidebarToggle::after {
+                content: '\f105';
+                font-family: 'Font Awesome 5 Free';
+                margin-left: 0.25rem;
+            }
+
+            .sidebar-card {
+                display: none;
+            }
+
+        }
+
+        // Brand / Espaço da logomarca
+        .sidebar-brand {
+            height: $sidebar-brand-base-height;
+            text-decoration: none;
+            font-size: $sidebar-brand-font-size;
+            font-weight: $sidebar-brand-font-weight;
+            padding-top: $sidebar-brand-padding-top;
+            padding-right: $sidebar-brand-padding-right;
+            padding-bottom: $sidebar-brand-padding-bottom;
+            padding-left: $sidebar-brand-padding-left;
+            text-align: center;
+            text-transform: $sidebar-brand-text-transform;
+            letter-spacing: $sidebar-brand-letter-spacing;
+            z-index: 1;
+
+            .sidebar-brand-icon i, .sidebar-brand-icon svg {
+                font-size: $sidebar-brand-icon-font-size;
+            }
+
+            .sidebar-brand-text {
+                display: none;
+            }
+
+        }
+
+        // Item de navegação da sidebar
+        .nav-item {
+            position: relative;
+
+            &:last-child {
+                margin-bottom: $sidebar-nav-item-last-child-margin-bottom;
+            }
+
+            .nav-link {
+                text-align: center;
+                padding-top: $sidebar-nav-item-padding-top;
+                padding-right: $sidebar-nav-item-padding-right;
+                padding-bottom: $sidebar-nav-item-padding-bottom;
+                padding-left: $sidebar-nav-item-padding-left;
+                width: $sidebar-collapsed-width;
+                text-decoration: none;
+
+                span {
+                    font-size: $sidebar-nav-item-font-size;
+                    display: block;
+                }
+
+                &.active, &.router-link-active {
+                    font-weight: 700;
+                }
+
+            }
+
+            &.active {
+
+                .nav-link {
+                    font-weight: 700;
+                }
+
+            }
+
+            // Accordion
+            .collapse {
+                position: absolute;
+                left: calc(#{$sidebar-collapsed-width} + #{$grid-gutter-width} / 2);
+                z-index: 1;
+                top: 2px;
+                // Animação Grow In
+                @extend .animated--grow-in;
+
+                .collapse-inner {
+                    border-radius: $collapse-border-radius;
+                    box-shadow: $collapse-box-shadow;
+                }
+
+            }
+
+            .collapsing {
+                display: none;
+                transition: none;
+            }
+
+            .collapse,
+            .collapsing {
+
+                .collapse-inner {
+                    padding: .5rem 0;
+                    min-width: 10rem;
+                    font-size: $body-font-size;
+                    margin: 0 0 1rem 0;
+                }
+
+                .collapse-header {
+                    margin: 0;
+                    white-space: nowrap;
+                    padding: .5rem 1.5rem;
+                    text-transform: uppercase;
+                    font-weight: 800;
+                    font-size: 0.65rem;
+                    color: $gray-500;
+                }
+
+                .collapse-item {
+                    padding: 0.5rem 1rem;
+                    margin: 0 0.5rem;
+                    display: block;
+                    color: $gray-900;
+                    text-decoration: none;
+                    border-radius: $collapse-border-radius;
+                    white-space: nowrap;
+
+                    &:hover {
+                        background-color: $gray-200;
+                    }
+
+                    &:active {
+                        background-color: $gray-300;
+                    }
+
+                    &.active {
+                        color: obterCor('neutral', 'light');
+                        font-weight: 700;
+                    }
+
+                }
+
+            }
+
+        }
+
+        // Linha divisória
+        hr.sidebar-divider {
+            margin: 0 1rem 1rem;
+        }
+
+        // Titulo de seção da sidebar
+        .sidebar-heading {
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: $sidebar-nav-heading-max-width;
+            padding-top: $sidebar-nav-heading-padding-top;
+            padding-right: $sidebar-nav-heading-padding-right;
+            padding-bottom: $sidebar-nav-heading-padding-bottom;
+            padding-left: $sidebar-nav-heading-padding-left;
+            font-weight: $sidebar-nav-heading-font-weight;
+            font-size: $sidebar-nav-heading-font-size;
+            @extend .text-uppercase; // text-uppercase é um estilo do bootstrap, nesse caso foi herdado
+        }
+
+        // Botão de toggle de sidebar que fica dentro da própria sidebar
+        #sidebarToggle {
+            width: $sidebar-inner-toggle-width;
+            height: $sidebar-inner-toggle-height;
+            text-align: center;
+            margin-bottom: $sidebar-inner-toggle-margin-bottom;
+            cursor: $sidebar-inner-toggle-cursor;
+
+            &::after {
+                font-weight: 900;
+                content: '\f104';
+                font-family: 'Font Awesome 5 Free';
+                margin-right: 0.1rem;
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+        }
+
+        // Caixa com mensagem no final da sidebar
+        .sidebar-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: $font-size-sm;
+            border-radius: $sidebar-card-border-radius;
+            color: obterCor('neutral', 'light', $opacidade: 0.2);
+            margin-left: $sidebar-card-margin;
+            margin-right: $sidebar-card-margin;
+            margin-bottom: $sidebar-card-margin;
+            padding: $sidebar-card-padding;
+            background-color: obterCor('neutral', 'dark', $opacidade: 0.1);
+
+            .sidebar-card-illustration {
+                height: $sidebar-card-illustration-height;
+                display: block;
+            }
+
+            .sidebar-card-title {
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 0.75rem;
+                color: obterCor('neutral', 'light', $opacidade: 0.6);
+            }
+
+            a.btn {
+                color: obterCor('neutral', 'light');
+                text-decoration: none;
+            }
+
+        }
+
+    }
+
+    /**
+    * =================================
+    * Sidebar Dark
+    * Ajustes específicos para sidebar estilo DARK
+    * =================================
+    */
+    .sidebar-dark {
+        background-color: obterCor('primary', 'base');
+
+        // Indica que a sidebar está no modo "fechado"
+        &.toggled {
+
+            #sidebarToggle::after {
+                color: obterCor('neutral', 'light', $opacidade: 0.5);
+            }
+
+        }
+
+        // Brand / Espaço da logomarca
+        .sidebar-brand {
+            color: obterCor('neutral', 'light');
+
+            &:hover {
+                text-decoration: none;
+                color: obterCor('neutral', 'light');
+            }
+
+        }
+
+        // Item de navegação da sidebar
+        .nav-item {
+
+            .nav-link {
+                color: obterCor('neutral', 'light', $opacidade: 0.8);
+
+                i, svg {
+                    color: obterCor('neutral', 'light', $opacidade: 0.3);
+                }
+
+                // Icone de Seta do Accordion (Submenu)
+                .arrow-toggle {
+                    color: obterCor('neutral', 'light', $opacidade: 0.6);
+                }
+
+                &:active,
+                &:focus,
+                &:hover {
+                    color: obterCor('neutral', 'light');
+
+                    i, svg {
+                        color: obterCor('neutral', 'light');
+                    }
+
+                }
+
+                // Accordion
+                &[data-toggle="collapse"]::after {
+                    color: obterCor('neutral', 'light', $opacidade: 0.5);
+                }
+
+                &.active, &.router-link-active {
+                    color: obterCor('neutral', 'light');
+
+                    i, svg {
+                        color: obterCor('neutral', 'light');
+                    }
+
+                }
+
+            }
+
+            &.active {
+
+                .nav-link {
+                    color: obterCor('neutral', 'light');
+
+                    i, svg {
+                        color: obterCor('neutral', 'light');
+                    }
+
+                }
+
+            }
+
+        }
+
+        // Linha divisória
+        hr.sidebar-divider {
+            border-top: 1px solid obterCor('neutral', 'light', $opacidade: 0.85);
+        }
+
+        // Titulo de seção da sidebar
+        .sidebar-heading {
+            color: obterCor('neutral', 'light', $opacidade: 0.6);
+        }
+
+        // Botão de toggle de sidebar que fica dentro da própria sidebar
+        #sidebarToggle {
+            background-color: obterCor('neutral', 'light', $opacidade: 0.8);
+
+            &::after {
+                color: obterCor('neutral', 'light', $opacidade: 0.5);
+            }
+
+            &:hover {
+                background-color: obterCor('neutral', 'light', $opacidade: 0.75);
+            }
+
+        }
+
+    }
+
+    /**
+    * =================================
+    * Sidebar Light
+    * Ajustes específicos para sidebar estilo LIGHT
+    * =================================
+    */
+    .sidebar-light {
+        background-color: obterCor('primary', 'lighter');
+
+        // Brand / Espaço da logomarca
+        .sidebar-brand {
+            color: $gray-700;
+
+            &:hover {
+                text-decoration: none;
+                color: $gray-700;
+            }
+
+        }
+
+        // Item de navegação da sidebar
+        .nav-item {
+
+            .nav-link {
+                color: $gray-600;
+
+                i, svg {
+                    color: $gray-600;
+                }
+
+                // Icone de Seta do Accordion (Submenu)
+                .arrow-toggle {
+                    color: $gray-700;
+                }
+
+                &:active,
+                &:focus,
+                &:hover {
+                    color: $gray-800;
+
+                    i, svg {
+                        color: $gray-800;
+                    }
+
+                }
+
+                // Accordion
+                &[data-toggle="collapse"]::after {
+                    color: $gray-500;
+                }
+
+            }
+
+            &.active {
+
+                .nav-link {
+                    color: $gray-700;
+
+                    i, svg {
+                        color: $gray-700;
+                    }
+
+                    // Icone de Seta do Accordion (Submenu)
+                    .arrow-toggle {
+                        color: $gray-700;
+                    }
+
+                }
+
+            }
+
+        }
+
+        // Linha divisória
+        hr.sidebar-divider {
+            border-top: 1px solid $gray-700;
+        }
+
+        // Titulo de seção da sidebar
+        .sidebar-heading {
+            color: $gray-600;
+        }
+
+        // Botão de toggle de sidebar que fica dentro da própria sidebar
+        #sidebarToggle {
+            background-color: $gray-200;
+
+            &::after {
+                color: $gray-500;
+            }
+
+            &:hover {
+                background-color: $gray-300;
+            }
+
+        }
+
+    }
+
+    /**
+    * =================================
+    * Breakpoint MD
+    * Media breakpoint herdado do bootstrap
+    * =================================
+    */
+    @include media-breakpoint-up(md) {
+        
+        .sidebar {
+            width: $sidebar-base-width !important;
+            
+            // Indica que a sidebar está no modo "fechado"
+            &.toggled {
+                overflow: visible;
+                width: $sidebar-collapsed-width !important;
+                
+                .nav-item {
+
+                    &:last-child {
+                        margin-bottom: $sidebar-nav-item-last-child-margin-bottom;
+                    }
+
+                    // Accordion do Submenu
+                    .collapse {
+                        position: absolute;
+                        left: calc(#{$sidebar-collapsed-width} + #{$grid-gutter-width} / 2);
+                        z-index: 1;
+                        top: 2px;
+                        // Animação Grow In para quando sidebar estiver no estado 'toggled'
+                        animation-name: growIn;
+                        animation-duration: 200ms;
+                        animation-timing-function: transform cubic-bezier(.18, 1.25, .4, 1), opacity cubic-bezier(0, 1, .4, 1);
+
+                        .collapse-inner {
+                            box-shadow: $collapse-box-shadow;
+                            border-radius: $collapse-border-radius;
+                        }
+
+                    }
+
+                    .collapsing {
+                        display: none;
+                        transition: none;
+                    }
+
+                    .collapse,
+                    .collapsing {
+                        margin: 0;
+                    }
+
+                    .nav-link {
+
+                        text-align: center;
+                        padding: 0.75rem 1rem;
+                        width: $sidebar-collapsed-width;
+
+                        // Icone da opção
+                        i, svg {
+                            margin-right: 0;
+                        }
+
+                        // Label da opção
+                        span {
+                            font-size: $sidebar-nav-item-font-size;
+                            display: block;
+                        }
+
+                        // Icone de Seta do Accordion (Submenu)
+                        .arrow-toggle {
+                            display: none;
+                        }
+
+                    }
+
+                } // Fecha nav-item
+
+                .sidebar-brand {
+
+                    .sidebar-brand-icon i, .sidebar-brand-icon svg {
+                        font-size: $sidebar-brand-icon-font-size;
+                    }
+
+                    .sidebar-brand-text {
+                        display: none;
+                    }
+
+                }
+
+                .sidebar-heading {
+                    text-align: center;
+                }
+
+            } // Fecha &.toggled
+
+            // Brand / Espaço da logomarca
+            .sidebar-brand {
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                .sidebar-brand-icon i, .sidebar-brand-icon svg {
+                    font-size: $sidebar-brand-icon-font-size;
+                }
+
+                .sidebar-brand-text {
+                    display: inline;
+                }
+                
+            }
+
+            .nav-item {
+
+                // Item de navegação da sidebar
+                .nav-link {
+                    display: block;
+                    width: $breakpoint-md-sidebar-nav-item-width;
+                    text-align: left;
+                    padding: $breakpoint-md-sidebar-nav-item-padding;
+                    width: $sidebar-base-width;
+
+                    // Icone da opção
+                    i, svg {
+                        font-size: $sidebar-nav-item-icon-font-size;
+                        margin-right: $sidebar-nav-item-icon-margin-right;
+                    }
+
+                    // Label da opção
+                    span {
+                        font-size: $breakpoint-md-sidebar-nav-item-font-size;
+                        display: inline;
+                    }
+                    
+                    // Icone de Seta do Accordion (Submenu)
+                    .arrow-toggle {
+                        display: block;
+                        position: absolute;
+                        right: $sidebar-nav-item-arrow-icon-right;
+                        top: $sidebar-nav-item-arrow-icon-top;
+                        font-size: $sidebar-nav-item-arrow-icon-font-size;
+                    }
+
+                }
+
+                // Accordion do Submenu
+                .collapse {
+                    position: relative;
+                    left: 0;
+                    z-index: 1;
+                    top: 0;
+                    //animation: none;
+
+                    .collapse-inner {
+                        border-radius: 0;
+                        box-shadow: none;
+                    }
+
+                }
+
+                .collapsing {
+                    display: block;
+                    transition: $collapse-transition;
+                }
+
+                .collapse,
+                .collapsing {
+                    margin: 0 1rem;
+                }
+
+            } // Fecha nav-item
+
+            // Titulo de seção da sidebar
+            .sidebar-heading {
+                text-align: left;
+            }
+
+        }
+
+    }
+
+}

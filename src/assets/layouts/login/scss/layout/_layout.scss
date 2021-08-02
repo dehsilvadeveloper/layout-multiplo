@@ -1,0 +1,47 @@
+/*
+ * LAYOUT SCSS
+ * @version v1.0
+ * 
+ */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body.login-layout {
+    height: 100%;
+
+    a {
+        transition: all 0.2s ease;
+    }
+
+    #wrapper {
+        display: flex;
+
+        #content-wrapper {
+            background-color: $gray-100;
+            width: 100%;
+            overflow-x: hidden;
+
+            #content {
+                flex: 1 0 auto;
+            }
+
+        }
+
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: $grid-gutter-width;
+        padding-right: $grid-gutter-width;
+    }
+
+    .bg-login-image {
+        background: url($login-image);
+        background-position: center;
+        background-size: cover;
+    }
+
+}

@@ -1,0 +1,348 @@
+/*
+ * HEADER SCSS
+ * @version v1.0
+ * 
+ */
+
+body.painel-layout {
+
+    /**
+    * =================================
+    * Topbar / Header
+    * =================================
+    */
+    .topbar {
+        height: $topbar-base-height;
+
+        // Botão de toggle de sidebar que fica dentro do header
+        #sidebarToggleTop {
+            height: $topbar-sidebar-toggle-height;
+            width: $topbar-sidebar-toggle-width;
+            color: obterCor('secondary', 'base');
+
+            &:hover {
+                background-color: $gray-200;
+            }
+
+            &:active {
+                background-color: $gray-300;
+            }
+
+            &:focus {
+                border: none;
+                box-shadow: none;
+            }
+
+        }
+
+        // Div com formulario de busca
+        .navbar-search {
+            width: $topbar-navbar-search-width;
+
+            input {
+                font-size: $topbar-input-search-font-size;
+                height: auto;
+            }
+
+            .btn-search-topbar {
+                color: obterCor('neutral', 'light');
+                background-color: obterCor('secondary', 'base');
+                border-color: obterCor('secondary', 'base');
+                border-top-left-radius: $topbar-btn-search-border-radius;
+                border-bottom-left-radius: $topbar-btn-search-border-radius;
+
+                &:hover {
+                    background-color: obterCor('secondary', 'dark', $opacidade: 0.9);
+                    border-color: obterCor('secondary', 'dark', $opacidade: 0.9);
+                }
+            }
+
+        }
+
+        // Linha divisória vertical
+        .topbar-divider {
+            width: 0;
+            border-right: 1px solid $gray-300;
+            height: calc(#{$topbar-base-height} - 2rem);
+            margin: $topbar-divider-margin;
+        }
+
+        // Navegação
+        .nav-item {
+
+            &:focus {
+                outline: none;
+            }
+
+            .nav-link {
+                height: $topbar-base-height;
+                display: flex;
+                align-items: center;
+                padding: 0 0.75rem;
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                span.name-of-user {
+                    font-weight: 600;
+                    color: $gray-600;
+                }
+
+                .badge-counter {
+                    position: absolute;
+                    transform: scale(0.7);
+                    transform-origin: top right;
+                    right: 0.25rem;
+                    margin-top: -0.35rem;
+                    font-size: 0.95em;
+                }
+
+                .img-profile {
+                    height: 2rem;
+                    width: 2rem;
+                }
+
+            }
+
+        }
+
+        // Dropdown
+        .dropdown {
+            position: static;
+
+            &.no-arrow {
+
+                .dropdown-toggle::after {
+                    display: none;
+                }
+
+            }
+
+            .dropdown-menu {
+                width: calc(100% - #{$grid-gutter-width});
+                right: $grid-gutter-width / 2;
+                font-size: 0.85rem;
+
+                .dropdown-header {
+                    @extend .text-uppercase;
+                    font-weight: 800;
+                    font-size: 0.65rem;
+                }
+            }
+
+        }
+
+        // Lsta de opções de dropdown (list)
+        .dropdown-list {
+            padding: 0;
+            border: none;
+            overflow: hidden;
+
+            .dropdown-header {
+                background-color: obterCor('secondary', 'base');
+                border: 1px solid obterCor('secondary', 'base');
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+                color: obterCor('neutral', 'light');
+            }
+
+            .dropdown-item {
+                white-space: normal;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+                border-left: 1px solid $gray-300;
+                border-right: 1px solid $gray-300;
+                border-bottom: 1px solid $gray-300;
+                line-height: 1.3rem;
+
+                &:hover {
+                    text-decoration: none;
+                }
+                
+                &:active {
+                    background-color: $gray-200;
+                    color: $gray-900;
+                }
+
+                .dropdown-list-image {
+                    position: relative;
+                    height: 2.5rem;
+                    width: 2.5rem;
+
+                    img {
+                        height: 2.5rem;
+                        width: 2.5rem;
+                    }
+
+                    .status-indicator {
+                        background-color: $gray-200;
+                        height: 0.75rem;
+                        width: 0.75rem;
+                        border-radius: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        border: .125rem solid obterCor('neutral', 'light');
+                    }
+
+                }
+
+                .text-truncate {
+                    max-width: 10rem;
+                }
+
+            } // Fecha .dropdown-item
+
+        }
+
+        // Lista de opções de dropdown (menu)
+        .dropdown-menu {
+
+            .dropdown-item {
+
+                &:hover {
+                    text-decoration: none;
+                }
+                
+                &:active {
+                    background-color: $gray-200;
+                    color: $gray-900;
+                }
+
+            }
+
+        }
+
+    }
+
+    /**
+    * =================================
+    * Topbar / Header Dark
+    * Ajustes específicos para topbar estilo DARK
+    * =================================
+    */
+    .topbar.navbar-dark {
+
+        .navbar-nav {
+
+            .nav-item {
+
+                .nav-link {
+                    color: obterCor('neutral', 'light', $opacidade: 0.2);
+
+                    &:hover {
+                        color: obterCor('neutral', 'light');
+                    }
+
+                    &:active {
+                        color: obterCor('neutral', 'light');
+                    }
+
+                }  
+
+            }
+
+        }
+
+        .dropdown-list, .dropdown-menu {
+
+            .dropdown-item {
+                color: obterCor('foreground', 'base', $opacidade: 0.8);
+
+                &:hover {
+                    color: $gray-900;
+                }
+
+            }
+
+        }
+
+    }
+
+    /**
+    * =================================
+    * Topbar / Header Light
+    * Ajustes específicos para topbar estilo LOGHT
+    * =================================
+    */
+    .topbar.navbar-light {
+
+        .navbar-nav {
+
+            .nav-item {
+
+                .nav-link {
+                    color: $gray-400;
+
+                    &:hover {
+                        color: $gray-500;
+                    }
+
+                    &:active {
+                        color: $gray-600;
+                    }
+
+                }
+
+            }
+
+        }
+
+        .dropdown-list, .dropdown-menu {
+
+            .dropdown-item {
+                color: obterCor('foreground', 'base', $opacidade: 0.8);
+
+                &:hover {
+                    color: $gray-900;
+                }
+
+            }
+
+        }
+
+    }
+
+    /**
+    * =================================
+    * Breakpoint MD
+    * Media breakpoint herdado do bootstrap
+    * =================================
+    */
+    @include media-breakpoint-up(sm) {
+
+        .topbar {
+
+            .dropdown {
+                position: relative;
+
+                .dropdown-menu {
+                    width: auto;
+                    right: 0;
+                }
+
+            }
+
+            .dropdown-list {
+                width: 20rem !important;
+
+                .dropdown-item {
+
+                    .text-truncate {
+                        max-width: 13.375rem;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

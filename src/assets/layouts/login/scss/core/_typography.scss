@@ -1,0 +1,101 @@
+/*
+ * TYPOGRAPHY SCSS
+ * @version v1.0
+ *
+ * Tipografia para textos da aplicação
+ * 
+ */
+
+/**
+ * =================================
+ * Body
+ * =================================
+ */
+body.login-layout {
+    background: obterCor('background', 'base') !important;
+    color: obterCor('foreground', 'light');
+    font-family: $body-font-family;
+    font-style: $body-font-style;
+    font-size: $body-font-size !important;
+    line-height: $body-line-height;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: $body-text-rendering;
+
+    /**
+    * =================================
+    * Headings
+    * =================================
+    */
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        margin-bottom: pxToRem($heading-margin-bottom);
+        font-weight: $heading-font-weight;
+        line-height: $heading-line-height;
+    }
+
+    h1, .h1 {
+        font-size: pxToRem(obterHeadingSize('h1'));
+    }
+
+    h2, .h2 {
+        font-size: pxToRem(obterHeadingSize('h2'));
+    }
+
+    h3, .h3 {
+        font-size: pxToRem(obterHeadingSize('h3'));
+    }
+
+    h4, .h4 {
+        font-size: pxToRem(obterHeadingSize('h4'));
+    }
+
+    h5, .h5 {
+        font-size: pxToRem(obterHeadingSize('h5'));
+    }
+
+    h6, .h6 {
+        font-size: pxToRem(obterHeadingSize('h6'));
+    }
+
+    /**
+    * =================================
+    * Paragraphs
+    * =================================
+    */
+    p {
+        margin-bottom: pxToRem($paragraph-margin);
+        font-size: pxToRem($paragraph-size);
+        line-height: $paragraph-line-height;
+        color: obterCor('foreground', 'light');
+    }
+
+    /**
+    * =================================
+    * Links
+    * =================================
+    */
+    a {
+        color: obterCor('secondary', 'base');
+        text-decoration: none;
+
+        &:hover:not(.btn) {
+            color: obterCor('secondary', 'dark');
+            text-decoration: underline;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    /**
+    * =================================
+    * Card-Body
+    * =================================
+    */
+    .card-body {
+        font-size: $card-body-font-size;
+    }
+
+}

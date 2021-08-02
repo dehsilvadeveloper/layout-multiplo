@@ -1,0 +1,140 @@
+/*
+ * ANIMATIONS SCSS
+ * @version v1.0
+ * 
+ */
+
+/**
+* Animação 'rotating'
+*/
+@keyframes rotating {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/**
+* Animação 'growIn'
+*/
+@keyframes growIn {
+	0% {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.animated--grow-in {
+	animation-name: growIn;
+	animation-duration: 200ms;
+	animation-timing-function: transform cubic-bezier(.18,1.25,.4,1), opacity cubic-bezier(0,1,.4,1);
+}
+
+/**
+* Animação 'slideToDown'
+*/
+@keyframes slideToDown {
+	0% {
+		max-height: 0;
+		opacity: 0;
+	}
+	100% {
+		max-height: 15em;
+		opacity: 1;
+	}
+}
+
+.animated--slide-to-down {
+	animation-name: slideToDown;
+	animation-duration: 500ms;
+	animation-timing-function: max-height ease-in-out, opacity cubic-bezier(0,1,.4,1);
+	animation-fill-mode: forwards;
+}
+
+/**
+* Animação 'bottomToTop'
+*/
+@keyframes bottomToTop {
+	0% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.bottomToTop-enter-active {
+	animation: bottomToTop .5s forwards;
+}
+.bottomToTop-leave-active {
+	animation: bottomToTop .5s reverse;
+}
+
+/**
+* Animação 'leftToRight'
+*/
+@keyframes leftToRight {
+	0% {
+		transform: translateX(-100vw);
+	}
+	50% {
+		transform: translateX(2em);
+	}
+	100%{
+		transform: translateX(0);
+	}
+}
+
+.leftToRight-enter-active {
+	animation: leftToRight .5s;
+}
+.leftToRight-leave-active {
+	animation: leftToRight .5s reverse;
+}
+
+/**
+* Animação 'slideFadeToLeft'
+*/
+@keyframes slideFadeToLeft {
+	0% {
+		transform: translateX(-30%);
+		opacity: 0;
+	}
+	100%{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.slideFadeToLeft-enter-active {
+    animation: slideFadeToLeft 0.7s;
+}
+.slideFadeToLeft-leave-active {
+	animation: slideFadeToLeft 0.7s reverse;
+}
+
+/**
+* Animação 'fadeIn'
+*/
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.animated--fade-in {
+	animation-name: fadeIn;
+	animation-duration: 200ms;
+	animation-timing-function: opacity cubic-bezier(0,1,.4,1);
+}

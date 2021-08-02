@@ -1,30 +1,44 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+
+	<component :is="layout" />
+
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import PadraoLayout from '@/layouts/padrao/PadraoLayout';
+import LoginLayout from '@/layouts/login/LoginLayout';
+import PainelLayout from '@/layouts/painel/PainelLayout';
 
-#nav {
-  padding: 30px;
+export default {
+	components: {
+		PadraoLayout,
+		LoginLayout,
+		PainelLayout
+	},
+	data() {
+		return {
+			layout: null
+		}
+	},
+	watch: {
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+		$route(to, from) {
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+			// Setamos o título da página de acordo com o que for definido no route meta title
+			document.title = to.meta.title;
+
+			// Setamos o layout da página de acordo com o que for definido no route meta layout
+			this.layout = to.meta.layout || 'PadraoLayout';
+
+		}
+
+	}
+};
+</script>
+
+<!--
+URLS para pesquisa:
+- https://medium.com/@arieldi/hi-the-fact-that-all-styles-are-rendered-dispite-what-layout-is-mounted-is-mostly-due-to-your-9a277b58e18b
+- https://cli.vuejs.org/config/#css-requiremoduleextension
+- https://stackoverflow.com/questions/48806433/sharing-common-css-across-vuejs-components?rq=1
+-->

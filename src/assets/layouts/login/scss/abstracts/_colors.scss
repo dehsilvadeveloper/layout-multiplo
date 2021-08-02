@@ -1,0 +1,106 @@
+/*
+ * COLORS SCSS
+ * @version v1.0
+ *
+ * Lista de cores
+ * 
+ */
+
+// Valor padrão de variante de cor
+$variante-padrao-cor: 'base' !default;
+
+// Lista de opacidades disponiveis
+$opacidade-cores: (
+    'light': 0.8, // opacidade usada por elementos com cores mais claras (lighter)
+    'dark': 0.4  // opacidade usada por elementos com cores mais escuras (darker)
+);
+
+// Esquema de cores do layout
+// É possivel usar a ferramenta de paleta de cores do "material design" para definir as cores que serão usadas aqui
+$esquema-cores: (
+    'neutral': (
+        'light': #ffffff,
+        'dark': #000015
+    ),
+    'primary': (
+        'base': #4e73df,
+        'light': #728de5,
+        'lighter': #e8ebfb,
+        'dark': #0046c1
+    ),
+    'secondary': (
+        'base': #49a0b2,
+        'light': #8ac4d0,
+        'lighter': #e0f1f4,
+        'dark': #358496
+    ),
+    'ternary': (
+        'base': #E5D549,
+        'light': #efe592,
+        'lighter': #f6f0bd,
+        'dark': #dfbe23
+    ),
+    'foreground': ( // Para cor de fonte padrão
+        'base': #191919,
+        'light': #858796,
+        'dark': #3c4b64,
+        'darker': #000000
+    ),
+    'background': ( // para cor de background padrão
+        'base': #4e73df,
+        'light': #728de5,
+        'dark': #0046c1
+    ),
+    'success': (
+        'base': #2eb85c,
+        'light': #96dbad,
+        'lighter': #cbedd6,
+        'dark': #1b9e3e
+    ),
+    'info': (
+        'base': #39f,
+        'light': #80c6ff,
+        'lighter': #c0e6ff,
+        'dark': #2982cc
+    ),
+    'warning': (
+        'base': #f9b115,
+        'light': #fcd88a,
+        'lighter': #feecc5,
+        'dark': #f6960b
+    ),
+    'danger': (
+        'base': #e55353,
+        'light': #f2a9a9,
+        'lighter': #f9d4d4,
+        'dark': #d93737
+    )
+);
+
+// Tons de cinza
+$gray-100: #f8f9fc !default;
+$gray-200: #eaecf4 !default;
+$gray-300: #dddfeb !default;
+$gray-400: #d1d3e2 !default;
+$gray-500: #b7b9cc !default;
+$gray-600: #858796 !default;
+$gray-700: #6e707e !default;
+$gray-800: #5a5c69 !default;
+$gray-900: #3a3b45 !default;
+
+// Outras cores
+$blue: #4e73df !default;
+$indigo: #6610f2 !default;
+$cornflower-blue: #6195ed !default;
+$cyan: #36b9cc !default;
+$teak: #b99b67 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #e74a3b !default;
+$orange: #fd7e14 !default;
+$yellow: #f6c23e !default;
+$green: #1cc88a !default;
+$teal: #20c9a6 !default;
+
+$brand-google: #ea4335 !default;
+$brand-facebook: #3b5998 !default;

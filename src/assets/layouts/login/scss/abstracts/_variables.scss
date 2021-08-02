@@ -1,0 +1,231 @@
+/*
+ * VARIABLES SCSS
+ * @version v1.0
+ *
+ * Lista de variaveis
+ * 
+ */
+
+@import 'colors';
+
+/**
+ * =================================
+ * Contrast Threshold
+ * =================================
+ */
+$yiq-contrasted-threshold: 195 !default;
+
+/**
+ * =================================
+ * Base
+ * =================================
+ */
+$base-font-size-px: 14px;
+$base-font-size: .875rem;
+$font-size-lg: $base-font-size * 1.25;
+$font-size-sm: $base-font-size * .875;
+$base-line-height: 1.4;
+
+/**
+ * =================================
+ * Font Family
+ * =================================
+ */
+$font-family-sans-serif: 'Nunito', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji';
+$font-family-lato: 'Lato', Helvetica, Roboto, Arial, sans-serif;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+:root {
+    --bs-font-sans-serif: 'Nunito', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji';
+}
+
+/**
+ * =================================
+ * Headings
+ * =================================
+ */
+$heading-styles: (
+    'small': (
+        'h1': ('font-size': 24px),
+        'h2': ('font-size': 20px),
+        'h3': ('font-size': 19px),
+        'h4': ('font-size': 18px),
+        'h5': ('font-size': 17px),
+        'h6': ('font-size': 16px)
+    ),
+    'medium': (
+        'h1': ('font-size': 35px),
+        'h2': ('font-size': 28px),
+        'h3': ('font-size': 24.5px),
+        'h4': ('font-size': 21px),
+        'h5': ('font-size': 17.5px),
+        'h6': ('font-size': 14px)
+    ),
+    'large': (
+        'h1': ('font-size': 48px),
+        'h2': ('font-size': 40px),
+        'h3': ('font-size': 31px),
+        'h4': ('font-size': 25px),
+        'h5': ('font-size': 20px),
+        'h6': ('font-size': 16px)
+    )
+);
+$heading-text-rendering: optimizeLegibility;
+$heading-font-weight: 400;
+$heading-line-height: 1.2;
+$heading-margin-bottom: 8px;
+
+/**
+ * =================================
+ * Paragraph
+ * =================================
+ */
+$paragraph-size: 14px;
+$paragraph-line-height: 1.5;
+$paragraph-margin: 20px;
+
+/**
+ * =================================
+ * Body
+ * =================================
+ */
+$body-font-family: $font-family-sans-serif;
+$body-font-style: normal;
+$body-font-size: $base-font-size;
+$body-line-height: $base-line-height;
+$body-text-rendering: optimizeLegibility;
+
+/**
+ * =================================
+ * Sidebar 
+ * =================================
+ */
+// Sidebar
+$sidebar-base-width: 14rem !default;
+$sidebar-collapsed-width: 6.5rem !default;
+$sidebar-min-height: 100vh;
+// Brand
+$sidebar-brand-flex-basis: 50px;
+$sidebar-brand-base-height: 4.375rem !default;
+$sidebar-brand-font-weight: 800;
+$sidebar-brand-font-size: 1rem;
+$sidebar-brand-text-transform: uppercase;
+$sidebar-brand-letter-spacing: 0.05rem;
+$sidebar-brand-padding-top: 1.5rem;
+$sidebar-brand-padding-right: 1rem;
+$sidebar-brand-padding-bottom: 1.5rem;
+$sidebar-brand-padding-left: 1rem;
+// Brand Icon
+$sidebar-brand-icon-font-size: 2rem;
+// Nav Heading (Title)
+$sidebar-nav-heading-font-weight: 800;
+$sidebar-nav-heading-font-size: 0.65rem;
+$sidebar-nav-heading-padding-top: 0;
+$sidebar-nav-heading-padding-right: 1rem;
+$sidebar-nav-heading-padding-bottom: 0;
+$sidebar-nav-heading-padding-left: 1rem;
+$sidebar-nav-heading-max-width: 10.625rem;
+// Nav Item
+$sidebar-nav-item-padding-top: 0.75rem;
+$sidebar-nav-item-padding-right: 1rem;
+$sidebar-nav-item-padding-bottom: 0.75rem;
+$sidebar-nav-item-padding-left: 1rem;
+$sidebar-nav-item-font-size:  0.65rem;
+$sidebar-nav-item-last-child-margin-bottom: 1rem;
+// Nav Item Icon
+$sidebar-nav-item-icon-font-size: 0.85rem;
+$sidebar-nav-item-icon-margin-right: 0.65rem;
+// Nav Item Arrow Icon (para indicar abertura/fechamento do submenu)
+$sidebar-nav-item-arrow-icon-right: 0.438rem;
+$sidebar-nav-item-arrow-icon-top: 1.063rem;
+$sidebar-nav-item-arrow-icon-font-size: 1.05rem;
+// Sidebar Inner Toggle
+$sidebar-inner-toggle-width: 2.5rem;
+$sidebar-inner-toggle-height: 2.5rem;
+$sidebar-inner-toggle-margin-bottom: 1rem;
+$sidebar-inner-toggle-cursor: pointer;
+// Sidebar Card
+$sidebar-card-margin: 1rem;
+$sidebar-card-padding: 1rem;
+$sidebar-card-border-radius: 0.35rem !default;
+$sidebar-card-font-size: 0.875rem;
+$sidebar-card-illustration-height: 3rem;
+
+/**
+ * =================================
+ * Sidebar Breakpoint MD
+ * =================================
+ */
+// Nav Item
+$breakpoint-md-sidebar-nav-item-width: 100%;
+$breakpoint-md-sidebar-nav-item-padding: 1rem;
+$breakpoint-md-sidebar-nav-item-font-size: 0.85rem;
+
+/**
+ * =================================
+ * Topbar 
+ * =================================
+ */
+// Topbar
+$topbar-base-height: 4.375rem !default;
+// Botão Toggle da sidebar
+$topbar-sidebar-toggle-height: 2.5rem;
+$topbar-sidebar-toggle-width: 2.5rem;
+// Navbar de busca
+$topbar-navbar-search-width: 25rem;
+// Input de formulário de busca
+$topbar-input-search-font-size: 0.85rem;
+// Botão de submit do formulário de busca
+$topbar-btn-search-border-radius: 0;
+// Linha divisória (Divider)
+$topbar-divider-margin: auto 1rem;
+
+/**
+ * =================================
+ * Footer 
+ * =================================
+ */
+// Footer
+$footer-padding-top: 2rem;
+$footer-padding-right: 0;
+$footer-padding-bottom: 2rem;
+$footer-padding-left: 0;
+// Copyright
+$footer-copyright-font-size: 0.8rem;
+$footer-copyright-line-height: 1;
+
+/**
+ * =================================
+ * Collapse 
+ * =================================
+ */
+$collapse-box-shadow-sm: 0 0.125rem 0.25rem 0 rgba($gray-900, .2) !default;
+$collapse-box-shadow: 0 0.15rem 1.75rem 0 rgba($gray-900, .15) !default;
+$collapse-border-radius: 0.35rem !default;
+$collapse-transition: height 3000ms ease !default;
+
+/**
+ * =================================
+ * Ajustes de espaçamento
+ * =================================
+ */
+// Ajuste de espaçamento de coluna para simetria
+$spacer: 1rem !default;
+$grid-gutter-width: $spacer * 1.5 !default;
+
+/**
+ * =================================
+ * Card
+ * =================================
+ */
+// Card Body
+$card-body-font-size: 1rem;
+
+/**
+ * =================================
+ * Imagens
+ * =================================
+ */
+$login-image: 'https://source.unsplash.com/ah-HeguOe9k/600x800' !default;
+$login-image-2: 'https://source.unsplash.com/K4mSJ7kc0As/600x800' !default;
+$register-image: 'https://source.unsplash.com/Mv9hjnEUHR4/600x800' !default;
+$password-image: 'https://source.unsplash.com/oWTW-jNGl9I/600x800' !default;

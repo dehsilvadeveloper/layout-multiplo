@@ -1,0 +1,130 @@
+/*
+ * FUNCTIONS SCSS
+ * @version v1.0
+ *
+ * Lista de funções
+ * 
+ */
+
+/// Função para obter cor através de esquema de cores guardado em variável
+/// @param {String} $nome - Nome do espectro de cor (primary, secondary, foreground, etc)
+/// @param {String} $variante - Nome da variante da cor (base, light, etc)
+/// @param {Number} $opacidade - Valor de opacidade que deve ser aplicado
+/// @return {Number} - Cor no padrão HEX
+@function obterCor($nome: 'primary', $variante: $variante-padrao-cor, $opacidade: 1) {
+    
+    // Defino valor padrão da variável de saída
+    $cor: null;
+
+    @if map-has-key($esquema-cores, $nome) == false {
+
+        @error "Espectro de cor inválido: #{$nome}";
+
+    }
+
+    // Capto o espectro da cor (primary, secondary, foreground, etc)
+    $espectro-cor: map-get($esquema-cores, $nome);
+
+    // Verifico se o espectro de cor foi definido corretamente
+    @if $espectro-cor {
+
+        @if map-has-key($espectro-cor, $variante) == false {
+
+            @error "Variante de cor inválida: #{$variante}";
+
+        }
+
+        // Defino a cor usando a variante (base, light, etc) de cor informada
+        $cor: map-get($espectro-cor, $variante);
+
+    }
+  
+    // Defino as configurações de alpha de acordo com o parametro opacidade fornecido
+    $alpha: if(type-of($opacidade) == 'number', $opacidade, map-get($opacidade-cores, $opacidade));
+
+    // Verifico se a cor e o alpha foram definidos corretamente
+    @if $cor and $alpha {
+
+        // Redefino a cor, aplicando alpha
+        $cor: rgba($cor, $alpha);
+
+    }
+  
+    @return $cor;
+
+}
+
+/// Função para obter size (tamanho) de heading através de estilos de headings guardados em variável
+/// @param {String} $heading - Heading procurado (h1, h2, h3, h4, h5, h6)
+/// @param {String} $variante - Nome da variante do heading (small, medium, etc)
+/// @return {String} - Tamanho em pixels (px)
+@function obterHeadingSize($heading, $variante: 'medium') {
+
+    // Defino valor padrão da variável de saída
+    $tamanho: null;
+
+    @if map-has-key($heading-styles, $variante) == false {
+
+        @error "Variante de heading inválido: #{$variante}";
+
+    }
+
+    // Capto a variante do heading (small, medium, etc) desejada
+    $variante-desejada: map-get($heading-styles, $variante);
+
+    // Verifico se a variante do heading foi definida corretamente
+    @if $variante-desejada {
+
+        @if map-has-key($variante-desejada, $heading) == false {
+
+            @error "Nome de heading inválido: #{$heading}";
+
+        }
+
+        // Capto o heading desejado e os atributos que pertencem a ele
+        $heading-desejado: map-get($variante-desejada, $heading);
+
+        @if map-has-key($heading-desejado, 'font-size') == false {
+
+            @error "Não foi encontrado um font-size para este heading: #{$heading}";
+
+        }
+
+        // Capto o tamanho da fonte a ser usado
+        $tamanho: map-get($heading-desejado, 'font-size');
+
+    }
+
+    @return $tamanho;
+    
+
+}
+
+/// Função para remover unidades (px, em, rem, etc) de um valor
+/// @param {Number} $valor - Valor que será formatado
+/// @return {Number} - Valor sem unidade
+@function removeUnidade($valor) {
+
+    @if type-of($valor) == 'number' and not unitless($valor) {
+        @return $valor / ($valor * 0 + 1);
+    }
+
+    @return $valor;
+
+}
+
+/// Função para fazer a conversão de valor em PX (pixels) para valor em REM
+/// Partimos do princípio que 1rem equivale a 16px
+/// @param {String|Number} $valor - O valor que será convertido. Pode conter a unidade ou não. Ex: 20px
+/// @return {String} - O valor já convertido em rem
+@function pxToRem($valor) {
+
+    // Removemos unidade do valor, caso exista
+    $valor: removeUnidade($valor);
+
+    //$remValor: math.div($valor, 16);
+    $remValor: $valor / 16;
+    
+    @return #{$remValor}rem;
+
+}

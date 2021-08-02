@@ -1,0 +1,21 @@
+/*
+ * MAIN SCSS
+ * @version v1.0
+ */
+
+@charset 'utf-8';
+
+// Vendors
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+
+// Abstracts
+@import 'abstracts/all';
+
+// Core
+@import 'core/all';
+
+// Components
+@import 'components/all';
+
+// Layout
+@import 'layout/all';
